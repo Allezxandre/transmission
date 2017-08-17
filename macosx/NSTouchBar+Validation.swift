@@ -29,7 +29,6 @@ import Cocoa
 
 @available(macOS 10.12.2, *)
 protocol TouchBarItemValidations: class {
-    
     func validateTouchBarItem(_ item: NSTouchBarItem) -> Bool
 }
 
@@ -59,15 +58,20 @@ extension NSTouchBar {
             switch item {
             case let item as NSCustomTouchBarItem:
                 item.validate()
-                
+                break
             case let item as NSGroupTouchBarItem:
                 item.groupTouchBar.validateVisibleItems()
-                
+                break
             case let item as NSPopoverTouchBarItem:
                 item.popoverTouchBar.validateVisibleItems()
                 item.pressAndHoldTouchBar?.validateVisibleItems()
-                
-            default: break
+                break
+            case let item as NSSharingServicePickerTouchBarItem:
+                item.validate()
+                break
+            default:
+                print(identifier)
+                break
             }
         }
     }
@@ -226,6 +230,43 @@ extension NSCustomTouchBarItem: NSValidatedUserInterfaceItem {
             control.isEnabled = validator.validateUserInterfaceItem(self)
         default: break
         }
+    }
+    
+    
+    
+    // MARK: Validated User Interface Item Protocol
+    
+    public var action: Selector? {
+        
+        return self.control?.action
+    }
+    
+    
+    public var tag: Int {
+        
+        return self.control?.tag ?? 0
+    }
+    
+    
+    
+    // MARK: Private Methods
+    
+    private var control: NSControl? {
+        
+        return self.view as? NSControl
+    }
+    
+}
+
+@available(macOS 10.12.2, *)
+extension NSSharingServicePickerTouchBarItem: NSValidatedUserInterfaceItem {
+    
+    /// validate item if content view is NSControl
+    fileprivate func validate() {
+        
+        // validate content control
+        guard let validator = self.delegate as? TouchBarItemValidations else { return }
+        self.isEnabled = validator.validateTouchBarItem(self)
     }
     
     

@@ -27,6 +27,7 @@ fileprivate extension NSTouchBarItemIdentifier {
     static let openWeb = NSTouchBarItemIdentifier(NSTouchBar.touchbarDomain+"_open_web")
     static let info = NSTouchBarItemIdentifier(NSTouchBar.touchbarDomain+"_info")
     static let pauseResumeSelected = NSTouchBarItemIdentifier(NSTouchBar.touchbarDomain+"_pause_resume_selected")
+    static let share = NSTouchBarItemIdentifier(NSTouchBar.touchbarDomain+"_share")
 }
 
 @available(OSX 10.12.2, *)
@@ -43,8 +44,8 @@ extension TorrentTableView {
         let touchBar = NSTouchBar()
         touchBar.delegate = self
         touchBar.customizationIdentifier = .touchBar
-        touchBar.defaultItemIdentifiers = [.create, .openFile, .flexibleSpace, .pauseResumeSelected, .flexibleSpace, .info, .otherItemsProxy]
-        touchBar.customizationAllowedItemIdentifiers = [.create, .openFile, .openWeb, .info, .flexibleSpace, .pauseResumeSelected]
+        touchBar.defaultItemIdentifiers = [.create, .openFile, .flexibleSpace, .pauseResumeSelected, .flexibleSpace, .share, .info, .otherItemsProxy]
+        touchBar.customizationAllowedItemIdentifiers = [.create, .openFile, .openWeb, .info, .share, .pauseResumeSelected, .flexibleSpace]
         
         return touchBar
     }
@@ -115,6 +116,10 @@ extension TorrentTableView: NSTouchBarDelegate {
             touchbarItem.view = button
             touchbarItem.customizationLabel = NSLocalizedString("Toggle Inspector", comment: "Inspector toolbar item -> palette label")
             return touchbarItem
+        case .share:
+            let touchbarItem = NSSharingServicePickerTouchBarItem(identifier: identifier)
+            touchbarItem.delegate = self.controller
+            return touchbarItem
         case .pauseResumeSelected:
             let groupItem = NSCustomTouchBarItem(identifier: identifier)
             let segmentedControl = NSSegmentedControl(frame: NSZeroRect)
@@ -172,6 +177,8 @@ extension Controller: TouchBarItemValidations {
                 return true
             }
             button.state = self.infoController.window != nil && self.infoController.window!.isVisible ? NSOnState : NSOffState
+        case .share:
+            return self.torrentTableView.numberOfSelectedRows > 0
         default:
             return true
         }

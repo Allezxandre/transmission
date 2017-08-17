@@ -2,3 +2,4 @@
 #import "TorrentTableView.h"
 #import "ToolbarSegmentedCell.h"
 #import "Torrent.h"
+#import "ShareTorrentFileHelper.h"
