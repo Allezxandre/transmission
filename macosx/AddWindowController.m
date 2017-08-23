@@ -120,6 +120,7 @@
             priorityIndex = POPUP_PRIORITY_NORMAL;
     }
     [fPriorityPopUp selectItemAtIndex: priorityIndex];
+    [fTouchBarPriorityControl selectSegmentWithTag: priorityIndex];
 
     [fStartCheck setState: [[NSUserDefaults standardUserDefaults] boolForKey: @"AutoStartDownload"] ? NSOnState : NSOffState];
 
@@ -265,6 +266,7 @@
             priority = TR_PRI_NORMAL;
     }
     [fTorrent setPriority: priority];
+    [fTouchBarPriorityControl selectSegmentWithTag: [sender indexOfSelectedItem]];
 }
 
 - (void) updateCheckButtons: (NSNotification *) notification
@@ -306,6 +308,10 @@
         [fGroupPopUp selectItemWithTag: fGroupValue];
     }
 }
+
+// Swift access
+@synthesize touchBarPriorityControl = fTouchBarPriorityControl;
+@synthesize priorityPopUp = fPriorityPopUp;
 
 @end
 

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13035"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13178.6"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AddWindowController">
@@ -22,6 +24,7 @@
                 <outlet property="fPriorityPopUp" destination="85" id="99"/>
                 <outlet property="fStartCheck" destination="17" id="26"/>
                 <outlet property="fStatusField" destination="4" id="24"/>
+                <outlet property="fTouchBarPriorityControl" destination="vGJ-1r-eZ5" id="KWI-90-zsh"/>
                 <outlet property="fUncheckAllButton" destination="102" id="109"/>
                 <outlet property="fVerifyIndicator" destination="68" id="69"/>
                 <outlet property="window" destination="1" id="29"/>
@@ -44,7 +47,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" image="NSApplicationIcon" id="8"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="4">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="4">
                         <rect key="frame" x="89" y="460" width="327" height="17"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="état" id="7">
@@ -53,7 +56,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <textField verticalHuggingPriority="750" id="5">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5">
                         <rect key="frame" x="89" y="485" width="324" height="22"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Nom du fichier" id="6">
@@ -102,17 +105,17 @@ Gw
                         <rect key="frame" x="20" y="215" width="393" height="221"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <clipView key="contentView" id="ioa-oS-3lv">
-                            <rect key="frame" x="1" y="1" width="376" height="219"/>
+                            <rect key="frame" x="1" y="1" width="391" height="219"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <outlineView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnReordering="NO" columnResizing="NO" autosaveColumns="NO" rowHeight="34" indentationPerLevel="16" autoresizesOutlineColumn="YES" outlineTableColumn="49" id="46" customClass="FileOutlineView">
-                                    <rect key="frame" x="0.0" y="0.0" width="376" height="219"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="391" height="219"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                     <tableColumns>
-                                        <tableColumn identifier="Name" editable="NO" width="315.09910000000002" minWidth="38.599119999999999" maxWidth="1000" id="49">
+                                        <tableColumn identifier="Name" editable="NO" width="330.09910000000002" minWidth="38.599119999999999" maxWidth="1000" id="49">
                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Nom">
                                                 <font key="font" metaFont="smallSystem"/>
                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -161,7 +164,7 @@ Gw
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="0.05439330543933054" horizontal="NO" id="45">
-                            <rect key="frame" x="377" y="1" width="15" height="219"/>
+                            <rect key="frame" x="376" y="1" width="16" height="219"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -226,7 +229,7 @@ Gw
                                         <action selector="changePriority:" target="-2" id="98"/>
                                     </connections>
                                 </popUpButton>
-                                <textField verticalHuggingPriority="750" id="40">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="40">
                                     <rect key="frame" x="192" y="53" width="60" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Groupe :" id="41">
@@ -248,7 +251,7 @@ Gw
                                     <rect key="frame" x="18" y="31" width="154" height="12"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 </progressIndicator>
-                                <textField verticalHuggingPriority="750" id="84">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="84">
                                     <rect key="frame" x="185" y="25" width="67" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Priorité :" id="91">
@@ -279,7 +282,7 @@ Gw
                                         <action selector="setDestination:" target="-2" id="30"/>
                                     </connections>
                                 </button>
-                                <textField verticalHuggingPriority="750" id="10">
+                                <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="10">
                                     <rect key="frame" x="15" y="83" width="88" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Sauver dans :" id="15">
@@ -295,7 +298,7 @@ Gw
                                         <rect key="frame" x="1" y="1" width="193" height="28"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <textField verticalHuggingPriority="750" id="12">
+                                            <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="12">
                                                 <rect key="frame" x="33" y="8" width="145" height="14"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="Fichier" id="13">
@@ -315,7 +318,7 @@ Gw
                             </subviews>
                         </view>
                     </box>
-                    <searchField wantsLayer="YES" verticalHuggingPriority="750" id="112">
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="112">
                         <rect key="frame" x="20" y="190" width="110" height="19"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <searchFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" placeholderString="Filtre" bezelStyle="round" id="113">
@@ -328,6 +331,75 @@ Gw
                         </connections>
                     </searchField>
                 </subviews>
+                <touchBar key="touchBar" id="FdK-GT-5Nq">
+                    <touchBarItems>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="Gdx-OX-E7x"/>
+                        <touchBarItem id="c0X-DC-06k">
+                            <viewController key="viewController" id="kaL-CH-vBu">
+                                <segmentedControl key="view" verticalHuggingPriority="750" springLoaded="YES" id="vGJ-1r-eZ5">
+                                    <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="FNu-Ph-1HR">
+                                        <font key="font" metaFont="system"/>
+                                        <segments>
+                                            <segment image="PriorityLowTemplate" width="32" tag="2"/>
+                                            <segment image="PriorityNormalTemplate" width="32" selected="YES" tag="1"/>
+                                            <segment image="PriorityHighTemplate" width="32"/>
+                                        </segments>
+                                    </segmentedCell>
+                                    <connections>
+                                        <action selector="changedTouchBarPriority:" target="-2" id="6vI-ZE-eKL"/>
+                                    </connections>
+                                </segmentedControl>
+                            </viewController>
+                            <size key="designTimeSize" width="106" height="30"/>
+                        </touchBarItem>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceSmall" id="IUU-2a-PG2"/>
+                        <touchBarPopoverItem customizationLabel="" collapsedRepresentationLabel="Group" supportsPressAndHold="YES" id="HaL-V6-cjB">
+                            <touchBar key="popoverTouchBar" id="FGE-W3-fUB">
+                                <nil name="touchBarItems"/>
+                            </touchBar>
+                        </touchBarPopoverItem>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="dXH-hU-wWL"/>
+                        <touchBarItem id="GZn-dw-vUI">
+                            <viewController key="viewController" id="HiO-Ee-ehN">
+                                <button key="view" verticalHuggingPriority="750" id="Yal-Zx-u9C">
+                                    <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Annuler" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zP-M4-y5r">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performClick:" target="21" id="OjX-AK-8P2"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="tvA-yY-MHk">
+                            <viewController key="viewController" id="wX5-fu-A98">
+                                <button key="view" verticalHuggingPriority="750" id="e68-m8-W72">
+                                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Ajouter" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sr7-1r-dmu">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performClick:" target="19" id="1sR-7C-cVf"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                            <size key="designTimeSize" width="80" height="32"/>
+                        </touchBarItem>
+                    </touchBarItems>
+                </touchBar>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="61"/>

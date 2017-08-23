@@ -40,6 +40,8 @@
 
     IBOutlet FileOutlineController * fFileController;
     IBOutlet NSScrollView * fFileScrollView;
+    
+    IBOutlet NSSegmentedControl * fTouchBarPriorityControl;
 
     Controller * fController;
 
@@ -55,27 +57,32 @@
     TorrentDeterminationType fGroupValueDetermination;
 }
 
+
 - (id) initWithTorrent: (Torrent *) torrent destination: (NSString *) path lockDestination: (BOOL) lockDestination
     controller: (Controller *) controller torrentFile: (NSString *) torrentFile
     deleteTorrentCheckEnableInitially: (BOOL) deleteTorrent canToggleDelete: (BOOL) canToggleDelete; //if canToggleDelete is NO, we will also not delete the file regardless of the delete check's state (this is so it can be disabled and checked for a downloaded torrent, where the file's already deleted)
 
 - (Torrent *) torrent;
 
-- (void) setDestination: (id) sender;
+- (IBAction) setDestination: (id) sender;
 
-- (void) add: (id) sender;
-- (void) cancelAdd: (id) sender;
+- (IBAction) add: (id) sender;
+- (IBAction) cancelAdd: (id) sender;
 
 - (IBAction) setFileFilterText: (id) sender;
 - (IBAction) checkAll: (id) sender;
 - (IBAction) uncheckAll: (id) sender;
 
-- (void) verifyLocalData: (id) sender;
+- (IBAction) verifyLocalData: (id) sender;
 
-- (void) changePriority: (id) sender;
+- (IBAction) changePriority: (id) sender;
 
 - (void) updateCheckButtons: (NSNotification *) notification;
 
 - (void) updateGroupMenu: (NSNotification *) notification;
+
+// Swift access
+@property (strong, readonly) NSSegmentedControl * touchBarPriorityControl;
+@property (strong, readonly) NSPopUpButton * priorityPopUp;
 
 @end

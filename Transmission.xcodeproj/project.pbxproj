@@ -284,6 +284,7 @@
 		A2FB057F0BFEB6800095564D /* DragOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB057D0BFEB6800095564D /* DragOverlayView.m */; };
 		A2FB701C0D95CAEA0001F331 /* GroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB701B0D95CAEA0001F331 /* GroupsController.m */; };
 		AC2C68061F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */; };
+		ACA1C5271F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */; };
 		ACB7C7C61F44F6D90025DAB6 /* Transmission+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C7C51F44F6D90025DAB6 /* Transmission+TouchBar.swift */; };
 		ACB7C7CA1F451AB30025DAB6 /* NSTouchBar+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C7C91F451AB30025DAB6 /* NSTouchBar+Validation.swift */; };
 		BE1183580CE160C50002D0F3 /* miniupnpc_declspec.h in Headers */ = {isa = PBXBuildFile; fileRef = BE11834E0CE160C50002D0F3 /* miniupnpc_declspec.h */; };
@@ -933,6 +934,7 @@
 		A2FB701B0D95CAEA0001F331 /* GroupsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GroupsController.m; path = macosx/GroupsController.m; sourceTree = "<group>"; };
 		AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; path = "macosx/Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; sourceTree = "<group>"; };
 		AC980CE21F43AE5C001D102A /* Transmission-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transmission-Bridging-Header.h"; path = "macosx/Transmission-Bridging-Header.h"; sourceTree = "<group>"; };
+		ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddWindowController+TouchBar.swift"; path = "macosx/AddWindowController+TouchBar.swift"; sourceTree = "<group>"; };
 		ACB7C7C51F44F6D90025DAB6 /* Transmission+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Transmission+TouchBar.swift"; path = "macosx/Transmission+TouchBar.swift"; sourceTree = "<group>"; };
 		ACB7C7C91F451AB30025DAB6 /* NSTouchBar+Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSTouchBar+Validation.swift"; path = "macosx/NSTouchBar+Validation.swift"; sourceTree = "<group>"; };
 		BE1183480CE160960002D0F3 /* libminiupnp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libminiupnp.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1628,6 +1630,7 @@
 				AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */,
 				ACB7C7C91F451AB30025DAB6 /* NSTouchBar+Validation.swift */,
 				ACB7C7C51F44F6D90025DAB6 /* Transmission+TouchBar.swift */,
+				ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */,
 			);
 			name = TouchBar;
 			sourceTree = "<group>";
@@ -2476,6 +2479,7 @@
 				A20BFFB70D091CC700CE5D2B /* ToolbarSegmentedCell.m in Sources */,
 				A22180980D148A71007D09ED /* GroupsPrefsController.m in Sources */,
 				A26AF21A0D2DA35A00FF7140 /* FileOutlineController.m in Sources */,
+				ACA1C5271F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift in Sources */,
 				A26AF2840D2DC27C00FF7140 /* AddWindowController.m in Sources */,
 				A2FB701C0D95CAEA0001F331 /* GroupsController.m in Sources */,
 				A2D307A40D9EC6870051FD27 /* BlocklistDownloader.m in Sources */,
