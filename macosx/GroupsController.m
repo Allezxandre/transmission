@@ -30,8 +30,6 @@
 
 - (void) saveGroups;
 
-- (NSImage *) imageForGroup: (NSMutableDictionary *) dict;
-
 - (BOOL) torrent: (Torrent *) torrent doesMatchRulesForGroupAtIndex: (NSInteger) index;
 
 @end
@@ -152,6 +150,42 @@ GroupsController * fGroupsInstance = nil;
     NSInteger orderIndex = [self rowValueForIndex: index];
     return orderIndex != -1 ? [self imageForGroup: fGroups[orderIndex]]
                             : [NSImage imageNamed: @"GroupsNoneTemplate"];
+}
+
+- (NSImage *) imageForGroup: (NSMutableDictionary *) dict
+{
+    NSImage * image;
+    if ((image = dict[@"Icon"]))
+        return image;
+    
+    NSRect rect = NSMakeRect(0.0, 0.0, ICON_WIDTH, ICON_WIDTH);
+    
+    NSBezierPath * bp = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: 3.0 yRadius: 3.0];
+    NSImage * icon = [[NSImage alloc] initWithSize: rect.size];
+    
+    NSColor * color = dict[@"Color"];
+    
+    [icon lockFocus];
+    
+    //border
+    NSGradient * gradient = [[NSGradient alloc] initWithStartingColor: [color blendedColorWithFraction: 0.45 ofColor:
+                                                                        [NSColor whiteColor]] endingColor: color];
+    [gradient drawInBezierPath: bp angle: 270.0];
+    [gradient release];
+    
+    //inside
+    bp = [NSBezierPath bezierPathWithRoundedRect: NSInsetRect(rect, 1.0, 1.0) xRadius: 3.0 yRadius: 3.0];
+    gradient = [[NSGradient alloc] initWithStartingColor: [color blendedColorWithFraction: 0.75 ofColor: [NSColor whiteColor]]
+                                             endingColor: [color blendedColorWithFraction: 0.2 ofColor: [NSColor whiteColor]]];
+    [gradient drawInBezierPath: bp angle: 270.0];
+    [gradient release];
+    
+    [icon unlockFocus];
+    
+    dict[@"Icon"] = icon;
+    [icon release];
+    
+    return icon;
 }
 
 - (NSColor *) colorForIndex: (NSInteger) index
@@ -347,6 +381,9 @@ GroupsController * fGroupsInstance = nil;
     return -1;
 }
 
+// Swift access
+@synthesize groups = fGroups;
+
 @end
 
 @implementation GroupsController (Private)
@@ -364,42 +401,6 @@ GroupsController * fGroupsInstance = nil;
     }
 
     [[NSUserDefaults standardUserDefaults] setObject: [NSKeyedArchiver archivedDataWithRootObject: groups] forKey: @"GroupDicts"];
-}
-
-- (NSImage *) imageForGroup: (NSMutableDictionary *) dict
-{
-    NSImage * image;
-    if ((image = dict[@"Icon"]))
-        return image;
-
-    NSRect rect = NSMakeRect(0.0, 0.0, ICON_WIDTH, ICON_WIDTH);
-
-    NSBezierPath * bp = [NSBezierPath bezierPathWithRoundedRect: rect xRadius: 3.0 yRadius: 3.0];
-    NSImage * icon = [[NSImage alloc] initWithSize: rect.size];
-
-    NSColor * color = dict[@"Color"];
-
-    [icon lockFocus];
-
-    //border
-    NSGradient * gradient = [[NSGradient alloc] initWithStartingColor: [color blendedColorWithFraction: 0.45 ofColor:
-                                [NSColor whiteColor]] endingColor: color];
-    [gradient drawInBezierPath: bp angle: 270.0];
-    [gradient release];
-
-    //inside
-    bp = [NSBezierPath bezierPathWithRoundedRect: NSInsetRect(rect, 1.0, 1.0) xRadius: 3.0 yRadius: 3.0];
-    gradient = [[NSGradient alloc] initWithStartingColor: [color blendedColorWithFraction: 0.75 ofColor: [NSColor whiteColor]]
-                endingColor: [color blendedColorWithFraction: 0.2 ofColor: [NSColor whiteColor]]];
-    [gradient drawInBezierPath: bp angle: 270.0];
-    [gradient release];
-
-    [icon unlockFocus];
-
-    dict[@"Icon"] = icon;
-    [icon release];
-
-    return icon;
 }
 
 - (BOOL) torrent: (Torrent *) torrent doesMatchRulesForGroupAtIndex: (NSInteger) index

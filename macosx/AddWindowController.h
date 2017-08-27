@@ -23,6 +23,8 @@
 #import <Cocoa/Cocoa.h>
 #import "Torrent.h"
 
+#define GROUP_SELECTION_CHANGED_NOTIFICATION @"GroupSelectionChangedNotification"
+
 @class Controller;
 @class FileOutlineController;
 @class Torrent;
@@ -40,8 +42,6 @@
 
     IBOutlet FileOutlineController * fFileController;
     IBOutlet NSScrollView * fFileScrollView;
-    
-    IBOutlet NSSegmentedControl * fTouchBarPriorityControl;
 
     Controller * fController;
 
@@ -55,6 +55,10 @@
     NSTimer * fTimer;
 
     TorrentDeterminationType fGroupValueDetermination;
+    
+    // TouchBar
+    IBOutlet NSSegmentedControl * fTouchBarPriorityControl;
+    IBOutlet NSPopoverTouchBarItem * fTouchBarGroupControl;
 }
 
 
@@ -81,8 +85,12 @@
 
 - (void) updateGroupMenu: (NSNotification *) notification;
 
+- (void) changeGroupValue: (id) sender;
+
 // Swift access
 @property (strong, readonly) NSSegmentedControl * touchBarPriorityControl;
+@property (strong, readonly) NSPopoverTouchBarItem * touchBarGroupControl;
 @property (strong, readonly) NSPopUpButton * priorityPopUp;
+@property (strong, readonly) NSPopUpButton * groupPopUp;
 
 @end

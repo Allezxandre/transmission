@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13035"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13178.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13038"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.1" requiredIntegratedClassName="NSTouchBar"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AddWindowController">
@@ -24,6 +24,7 @@
                 <outlet property="fPriorityPopUp" destination="85" id="99"/>
                 <outlet property="fStartCheck" destination="17" id="26"/>
                 <outlet property="fStatusField" destination="4" id="24"/>
+                <outlet property="fTouchBarGroupControl" destination="HaL-V6-cjB" id="YJG-C4-7hO"/>
                 <outlet property="fTouchBarPriorityControl" destination="vGJ-1r-eZ5" id="KWI-90-zsh"/>
                 <outlet property="fUncheckAllButton" destination="102" id="109"/>
                 <outlet property="fVerifyIndicator" destination="68" id="69"/>
@@ -355,10 +356,56 @@ Gw
                             <size key="designTimeSize" width="106" height="30"/>
                         </touchBarItem>
                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceSmall" id="IUU-2a-PG2"/>
-                        <touchBarPopoverItem customizationLabel="" collapsedRepresentationLabel="Group" supportsPressAndHold="YES" id="HaL-V6-cjB">
+                        <touchBarPopoverItem customizationLabel="" collapsedRepresentationImage="ActionHover" collapsedRepresentationLabel="Groupe" id="HaL-V6-cjB" customClass="GroupPopoverTouchBarItem" customModule="Transmission" customModuleProvider="target">
                             <touchBar key="popoverTouchBar" id="FGE-W3-fUB">
-                                <nil name="touchBarItems"/>
+                                <touchBarItems>
+                                    <touchBarItem id="Kky-od-uuo">
+                                        <viewController key="viewController" id="ZaY-OH-cBq">
+                                            <textField key="view" verticalHuggingPriority="750" misplaced="YES" id="SXn-dw-qyZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="60" height="24"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="Groupe" drawsBackground="YES" id="9OC-t2-L3z">
+                                                    <font key="font" usesAppearanceFont="YES"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </viewController>
+                                        <size key="designTimeSize" width="60" height="24"/>
+                                    </touchBarItem>
+                                    <touchBarItem id="Zab-RM-b2g">
+                                        <viewController key="viewController" id="v0n-Hn-5Te">
+                                            <scrollView key="view" autoresizesSubviews="NO" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" findBarPosition="belowContent" id="mde-Oe-ChT">
+                                                <rect key="frame" x="0.0" y="0.0" width="617" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                <clipView key="contentView" autoresizesSubviews="NO" id="B6U-ga-1V0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="617" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <view id="nrb-61-gHI">
+                                                            <rect key="frame" x="0.0" y="0.0" width="602" height="15"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                        </view>
+                                                    </subviews>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="DPe-n8-g55">
+                                                    <rect key="frame" x="-100" y="-100" width="617" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="j6v-YE-Oga">
+                                                    <rect key="frame" x="-100" y="-100" width="16" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                        </viewController>
+                                        <size key="designTimeSize" width="617" height="30"/>
+                                    </touchBarItem>
+                                </touchBarItems>
                             </touchBar>
+                            <connections>
+                                <outlet property="buttonScrollView" destination="mde-Oe-ChT" id="JNr-Mk-5ve"/>
+                                <outlet property="windowController" destination="-2" id="C7U-33-Ch8"/>
+                            </connections>
                         </touchBarPopoverItem>
                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="dXH-hU-wWL"/>
                         <touchBarItem id="GZn-dw-vUI">
@@ -392,7 +439,7 @@ DQ
 </string>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="performClick:" target="19" id="1sR-7C-cVf"/>
+                                        <action selector="performClick:" target="19" id="swT-Aa-ciH"/>
                                     </connections>
                                 </button>
                             </viewController>
@@ -412,6 +459,7 @@ DQ
         </customObject>
     </objects>
     <resources>
+        <image name="ActionHover" width="16" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="PriorityHighTemplate" width="12" height="12"/>
         <image name="PriorityLowTemplate" width="12" height="12"/>

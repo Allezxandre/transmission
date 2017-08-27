@@ -43,7 +43,6 @@
 - (void) setDestinationPath: (NSString *) destination determinationType: (TorrentDeterminationType) determinationType;
 
 - (void) setGroupsMenu;
-- (void) changeGroupValue: (id) sender;
 
 - (void) sameNameAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo;
 
@@ -108,6 +107,7 @@
 
     [self setGroupsMenu];
     [fGroupPopUp selectItemWithTag: fGroupValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self]; // Send first value to anyone listening (i.e. the TouchBar)
 
     NSInteger priorityIndex;
     switch ([fTorrent priority])
@@ -309,9 +309,28 @@
     }
 }
 
+- (void) changeGroupValue: (id) sender
+{
+    NSInteger previousGroup = fGroupValue;
+    fGroupValue = [sender tag];
+    fGroupValueDetermination = TorrentDeterminationUserSpecified;
+    
+    if (!fLockDestination)
+    {
+        if ([[GroupsController groups] usesCustomDownloadLocationForIndex: fGroupValue])
+            [self setDestinationPath: [[GroupsController groups] customDownloadLocationForIndex: fGroupValue] determinationType: TorrentDeterminationAutomatic];
+        else if ([fDestination isEqualToString: [[GroupsController groups] customDownloadLocationForIndex: previousGroup]])
+            [self setDestinationPath: [[NSUserDefaults standardUserDefaults] stringForKey: @"DownloadFolder"] determinationType: TorrentDeterminationAutomatic];
+        else;
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self];
+}
+
 // Swift access
 @synthesize touchBarPriorityControl = fTouchBarPriorityControl;
+@synthesize touchBarGroupControl = fTouchBarGroupControl;
 @synthesize priorityPopUp = fPriorityPopUp;
+@synthesize groupPopUp = fGroupPopUp;
 
 @end
 
@@ -382,22 +401,6 @@
 {
     NSMenu * groupMenu = [[GroupsController groups] groupMenuWithTarget: self action: @selector(changeGroupValue:) isSmall: NO];
     [fGroupPopUp setMenu: groupMenu];
-}
-
-- (void) changeGroupValue: (id) sender
-{
-    NSInteger previousGroup = fGroupValue;
-    fGroupValue = [sender tag];
-    fGroupValueDetermination = TorrentDeterminationUserSpecified;
-
-    if (!fLockDestination)
-    {
-        if ([[GroupsController groups] usesCustomDownloadLocationForIndex: fGroupValue])
-            [self setDestinationPath: [[GroupsController groups] customDownloadLocationForIndex: fGroupValue] determinationType: TorrentDeterminationAutomatic];
-        else if ([fDestination isEqualToString: [[GroupsController groups] customDownloadLocationForIndex: previousGroup]])
-            [self setDestinationPath: [[NSUserDefaults standardUserDefaults] stringForKey: @"DownloadFolder"] determinationType: TorrentDeterminationAutomatic];
-        else;
-    }
 }
 
 - (void) sameNameAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo

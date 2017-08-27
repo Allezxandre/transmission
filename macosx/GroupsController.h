@@ -28,6 +28,7 @@
 {
     NSMutableArray * fGroups;
 }
+@property (strong, readonly) NSMutableArray * groups;
 
 + (GroupsController *) groups;
 
@@ -40,6 +41,7 @@
 - (void) setName: (NSString *) name forIndex: (NSInteger) index;
 
 - (NSImage *) imageForIndex: (NSInteger) index;
+- (NSImage *) imageForGroup: (NSMutableDictionary *) dict; // public for use with Swift
 
 - (NSColor *) colorForIndex: (NSInteger) index;
 - (void) setColor: (NSColor *) color forIndex: (NSInteger) index;
