@@ -23,6 +23,18 @@
 #import <Cocoa/Cocoa.h>
 #import <Quartz/Quartz.h>
 
+#define INFO_TAB_CHANGED_NOTIFICATION @"InfoTabChangedNotification"
+
+typedef enum
+{
+    TAB_GENERAL_TAG = 0,
+    TAB_ACTIVITY_TAG = 1,
+    TAB_TRACKERS_TAG = 2,
+    TAB_PEERS_TAG = 3,
+    TAB_FILE_TAG = 4,
+    TAB_OPTIONS_TAG = 5
+} tabTag;
+
 @protocol InfoViewController;
 @class InfoGeneralViewController;
 @class InfoActivityViewController;
@@ -51,6 +63,8 @@
     IBOutlet NSImageView * fImageView;
     IBOutlet NSTextField * fNameField, * fBasicInfoField, * fNoneSelectedField;
 }
+
+@property(strong, readonly) NSMatrix * tabMatrix;
 
 - (void) setInfoForTorrents: (NSArray *) torrents;
 - (void) updateInfoStats;

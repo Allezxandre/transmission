@@ -44,16 +44,6 @@
 
 #define INVALID -99
 
-typedef enum
-{
-    TAB_GENERAL_TAG = 0,
-    TAB_ACTIVITY_TAG = 1,
-    TAB_TRACKERS_TAG = 2,
-    TAB_PEERS_TAG = 3,
-    TAB_FILE_TAG = 4,
-    TAB_OPTIONS_TAG = 5
-} tabTag;
-
 @interface InfoWindowController (Private)
 
 - (void) resetInfo;
@@ -121,6 +111,7 @@ typedef enum
         tag = TAB_GENERAL_TAG;
     }
     [fTabMatrix selectCellWithTag: tag];
+    [[NSNotificationCenter defaultCenter] postNotificationName:INFO_TAB_CHANGED_NOTIFICATION object:self];
     [self setTab: nil];
 
     //set blank inspector
@@ -281,6 +272,7 @@ typedef enum
 
     //selected tab item
     [(InfoTabButtonCell *)[fTabMatrix selectedCell] setSelectedTab: YES];
+    [[NSNotificationCenter defaultCenter] postNotificationName:INFO_TAB_CHANGED_NOTIFICATION object:self];
 
     NSView * view = [fViewController view];
 
@@ -394,6 +386,9 @@ typedef enum
 {
     return [fFileViewController quickLookSourceFrameForPreviewItem: item];
 }
+
+// Swift access
+@synthesize tabMatrix = fTabMatrix;
 
 @end
 

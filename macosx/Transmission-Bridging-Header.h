@@ -6,3 +6,4 @@
 #import "ShareTorrentFileHelper.h"
 #import "AddWindowController.h"
 #import "GroupsController.h"
+#import "InfoWindowController.h"
