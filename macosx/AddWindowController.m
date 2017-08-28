@@ -30,10 +30,6 @@
 
 #define UPDATE_SECONDS 1.0
 
-#define POPUP_PRIORITY_HIGH 0
-#define POPUP_PRIORITY_NORMAL 1
-#define POPUP_PRIORITY_LOW 2
-
 @interface AddWindowController (Private)
 
 - (void) updateFiles;
@@ -120,7 +116,7 @@
             priorityIndex = POPUP_PRIORITY_NORMAL;
     }
     [fPriorityPopUp selectItemAtIndex: priorityIndex];
-    [fTouchBarPriorityControl selectSegmentWithTag: priorityIndex];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PRIORITY_SELECTION_CHANGED_NOTIFICATION object:self];
 
     [fStartCheck setState: [[NSUserDefaults standardUserDefaults] boolForKey: @"AutoStartDownload"] ? NSOnState : NSOffState];
 
@@ -266,7 +262,7 @@
             priority = TR_PRI_NORMAL;
     }
     [fTorrent setPriority: priority];
-    [fTouchBarPriorityControl selectSegmentWithTag: [sender indexOfSelectedItem]];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PRIORITY_SELECTION_CHANGED_NOTIFICATION object:self];
 }
 
 - (void) updateCheckButtons: (NSNotification *) notification
@@ -326,11 +322,19 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self];
 }
 
-// Swift access
-@synthesize touchBarPriorityControl = fTouchBarPriorityControl;
-@synthesize touchBarGroupControl = fTouchBarGroupControl;
+// AddWindowCommon
 @synthesize priorityPopUp = fPriorityPopUp;
 @synthesize groupPopUp = fGroupPopUp;
+
+- (void)setGroupSelection:(NSInteger)newGroup {
+    [[self groupPopUp] selectItemWithTag:newGroup];
+    [self changeGroupValue:[self groupPopUp]];
+}
+
+- (void)setPrioritySelection:(NSInteger)newPriority {
+    [[self priorityPopUp] selectItemWithTag:newPriority];
+    [self changePriority:[self priorityPopUp]];
+}
 
 @end
 

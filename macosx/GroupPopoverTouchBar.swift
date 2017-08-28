@@ -11,7 +11,7 @@ import Cocoa
 @available(OSX 10.12.2, *)
 class GroupPopoverTouchBarItem: NSPopoverTouchBarItem {
     
-    @IBOutlet var windowController: AddWindowController! {
+    @IBOutlet var windowController: AddWindowCommon! {
         didSet {
             NotificationCenter.default.addObserver(forName: NSNotification.Name(GROUP_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updatePopoverButton)
         }
@@ -54,8 +54,7 @@ class GroupPopoverTouchBarItem: NSPopoverTouchBarItem {
     func groupButtonTouched(sender: NSButton) {
         // For this to work, the tags from the touchbar have to match those of the set-up menu
         if let tag = sender.cell?.tag {
-            self.windowController.groupPopUp.selectItem(withTag: tag)
-            self.windowController.changeGroupValue(sender.cell!)
+            self.windowController.setGroupSelection(tag)
         } else {
             assertionFailure("No tag on sender cell. Cannot determine group.")
         }

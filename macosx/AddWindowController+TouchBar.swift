@@ -8,37 +8,52 @@
 
 import Foundation
 
-extension AddWindowController {
+/// Indices of the touchbar priority segmented control.
+enum TouchBarPriority: Int {
+    case low = 0
+    case normal = 1
+    case high = 2
     
-    /// Indices of the touchbar priority segmented control.
-    enum TouchBarPriority: Int {
-        case low = 0
-        case normal = 1
-        case high = 2
-        
-        /// Conversion of the indices to match the ones of `TR_PRI_*`.
-        var torrentPriority: tr_priority_t {
-            switch self {
-            case .low:
-                return tr_priority_t(TR_PRI_LOW)
-            case .normal:
-                return tr_priority_t(TR_PRI_NORMAL)
-            case .high:
-                return tr_priority_t(TR_PRI_HIGH)
-            }
+    /// Conversion of the indices to match the ones of `TR_PRI_*`.
+    var torrentPriority: tr_priority_t {
+        switch self {
+        case .low:
+            return tr_priority_t(TR_PRI_LOW)
+        case .normal:
+            return tr_priority_t(TR_PRI_NORMAL)
+        case .high:
+            return tr_priority_t(TR_PRI_HIGH)
         }
-        
-        /// Conversion of the indices to match the ones of `POPUP_PRIORITY_*` in `AddWindowController.m`.
-        var popUpPriority: Int {
-            switch self {
-            case .low:
-                return 2
-            case .normal:
-                return 1
-            case .high:
-                return 0
-            }
+    }
+    
+    /// Conversion of the indices to match the ones of `POPUP_PRIORITY_*` in `AddWindowController.m`.
+    var popUpPriority: Int {
+        switch self {
+        case .low:
+            return 2
+        case .normal:
+            return 1
+        case .high:
+            return 0
         }
+    }
+}
+
+@available(OSX 10.12.2, *)
+class AddWindowTouchBar: NSTouchBar {
+    @IBOutlet var windowController: AddWindowCommon! {
+        didSet {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name(PRIORITY_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updateTouchbarPriority)
+        }
+    }
+    @IBOutlet var touchBarPriorityControl: NSSegmentedControl!
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func updateTouchbarPriority(notification: Notification) {
+        self.touchBarPriorityControl.selectSegment(withTag: self.windowController.priorityPopUp.selectedTag())
     }
     
     @IBAction func changedTouchBarPriority(_ sender: NSSegmentedControl) {
@@ -48,8 +63,7 @@ extension AddWindowController {
             assertionFailure("Unexpected touchbar priority value selected: \(sender.indexOfSelectedItem).")
             selectedPriority = TouchBarPriority.normal
         }
-        self.torrent().setPriority(selectedPriority.torrentPriority)
-        self.priorityPopUp.selectItem(at: selectedPriority.popUpPriority)
+        self.windowController.setPrioritySelection(selectedPriority.popUpPriority)
     }
     
 }

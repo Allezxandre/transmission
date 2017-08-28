@@ -22,6 +22,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Torrent.h"
+#import "AddWindowController.h"
 
 @class Controller;
 @class Torrent;

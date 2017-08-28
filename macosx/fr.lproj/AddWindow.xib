@@ -24,8 +24,6 @@
                 <outlet property="fPriorityPopUp" destination="85" id="99"/>
                 <outlet property="fStartCheck" destination="17" id="26"/>
                 <outlet property="fStatusField" destination="4" id="24"/>
-                <outlet property="fTouchBarGroupControl" destination="HaL-V6-cjB" id="YJG-C4-7hO"/>
-                <outlet property="fTouchBarPriorityControl" destination="vGJ-1r-eZ5" id="KWI-90-zsh"/>
                 <outlet property="fUncheckAllButton" destination="102" id="109"/>
                 <outlet property="fVerifyIndicator" destination="68" id="69"/>
                 <outlet property="window" destination="1" id="29"/>
@@ -332,7 +330,7 @@ Gw
                         </connections>
                     </searchField>
                 </subviews>
-                <touchBar key="touchBar" id="FdK-GT-5Nq">
+                <touchBar key="touchBar" id="FdK-GT-5Nq" customClass="AddWindowTouchBar" customModule="Transmission" customModuleProvider="target">
                     <touchBarItems>
                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="Gdx-OX-E7x"/>
                         <touchBarItem id="c0X-DC-06k">
@@ -349,7 +347,7 @@ Gw
                                         </segments>
                                     </segmentedCell>
                                     <connections>
-                                        <action selector="changedTouchBarPriority:" target="-2" id="6vI-ZE-eKL"/>
+                                        <action selector="changedTouchBarPriority:" target="FdK-GT-5Nq" id="jwC-Be-h5E"/>
                                     </connections>
                                 </segmentedControl>
                             </viewController>
@@ -404,7 +402,7 @@ Gw
                             </touchBar>
                             <connections>
                                 <outlet property="buttonScrollView" destination="mde-Oe-ChT" id="JNr-Mk-5ve"/>
-                                <outlet property="windowController" destination="-2" id="C7U-33-Ch8"/>
+                                <outlet property="windowController" destination="-2" id="oK6-SB-llK"/>
                             </connections>
                         </touchBarPopoverItem>
                         <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="dXH-hU-wWL"/>
@@ -446,6 +444,10 @@ DQ
                             <size key="designTimeSize" width="80" height="32"/>
                         </touchBarItem>
                     </touchBarItems>
+                    <connections>
+                        <outlet property="touchBarPriorityControl" destination="vGJ-1r-eZ5" id="YXG-NY-IKH"/>
+                        <outlet property="windowController" destination="-2" id="lKr-ZJ-1ka"/>
+                    </connections>
                 </touchBar>
             </view>
             <connections>

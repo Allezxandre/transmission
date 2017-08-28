@@ -27,10 +27,6 @@
 #import "NSStringAdditions.h"
 #import "Torrent.h"
 
-#define POPUP_PRIORITY_HIGH 0
-#define POPUP_PRIORITY_NORMAL 1
-#define POPUP_PRIORITY_LOW 2
-
 @interface AddMagnetWindowController (Private)
 
 - (void) confirmAdd;
