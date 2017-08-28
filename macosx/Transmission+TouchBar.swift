@@ -115,6 +115,7 @@ extension TorrentTableView: NSTouchBarDelegate {
             button.setAccessibilityLabel(NSLocalizedString("Toggle Inspector", comment: "Inspector toolbar item -> palette label")) // FIXME: Check if this works
             touchbarItem.view = button
             touchbarItem.customizationLabel = NSLocalizedString("Toggle Inspector", comment: "Inspector toolbar item -> palette label")
+            touchbarItem.visibilityPriority = .high
             return touchbarItem
         case .share:
             let touchbarItem = NSSharingServicePickerTouchBarItem(identifier: identifier)
@@ -149,6 +150,7 @@ extension TorrentTableView: NSTouchBarDelegate {
             
             groupItem.visibilityPriority = .high
             groupItem.customizationLabel = NSLocalizedString("Pause / Resume Selected", comment: "Selected toolbar item -> palette label")
+            groupItem.visibilityPriority = .low
             
             return groupItem
         default:

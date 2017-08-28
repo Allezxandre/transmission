@@ -32,4 +32,6 @@
 - (void) clearView;
 - (void) saveViewSize;
 
+- (void) setTab: (id) sender;
+
 @end

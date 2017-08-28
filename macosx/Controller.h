@@ -33,7 +33,7 @@
 @class Badger;
 @class DragOverlayWindow;
 @class FilterBarController;
-@class InfoWindowController;
+@class SwiftInfoWindowController;
 @class MessageWindowController;
 @class PrefsController;
 @class StatusBarController;
@@ -56,7 +56,7 @@ typedef enum
 
     NSMutableArray                  * fTorrents, * fDisplayedTorrents;
 
-    InfoWindowController            * fInfoController;
+    SwiftInfoWindowController       * fInfoController;
     PrefsController                 * fPrefsController;
     MessageWindowController         * fMessageController;
 
@@ -176,7 +176,7 @@ typedef enum
 
 - (NSArray *)selectedTorrents;
 
-@property (strong, readonly) InfoWindowController * infoController;
+@property (strong, readonly) SwiftInfoWindowController * infoController;
 @property (strong, readonly) TorrentTableView     * torrentTableView;
 @property (retain, readonly) PrefsController * prefsController;
 - (void) showPreferenceWindow: (id) sender;

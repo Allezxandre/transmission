@@ -283,6 +283,7 @@
 		A2F8CD430F3D0F4A00DB356A /* miniupnpcstrings.h in Headers */ = {isa = PBXBuildFile; fileRef = A2F8CD420F3D0F4A00DB356A /* miniupnpcstrings.h */; };
 		A2FB057F0BFEB6800095564D /* DragOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB057D0BFEB6800095564D /* DragOverlayView.m */; };
 		A2FB701C0D95CAEA0001F331 /* GroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB701B0D95CAEA0001F331 /* GroupsController.m */; };
+		AC0253C31F538CFA00FEB10A /* InfoWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0253C21F538CFA00FEB10A /* InfoWindowController+TouchBar.swift */; };
 		AC2C68061F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */; };
 		ACA1C5271F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */; };
 		ACAC9DA01F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC9D9F1F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift */; };
@@ -933,6 +934,7 @@
 		A2FB07F115F8208300933543 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = macosx/QuickLookPlugin/nl.lproj/Localizable.strings; sourceTree = SOURCE_ROOT; };
 		A2FB701A0D95CAEA0001F331 /* GroupsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GroupsController.h; path = macosx/GroupsController.h; sourceTree = "<group>"; };
 		A2FB701B0D95CAEA0001F331 /* GroupsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GroupsController.m; path = macosx/GroupsController.m; sourceTree = "<group>"; };
+		AC0253C21F538CFA00FEB10A /* InfoWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InfoWindowController+TouchBar.swift"; path = "macosx/InfoWindowController+TouchBar.swift"; sourceTree = "<group>"; };
 		AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; path = "macosx/Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; sourceTree = "<group>"; };
 		AC980CE21F43AE5C001D102A /* Transmission-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transmission-Bridging-Header.h"; path = "macosx/Transmission-Bridging-Header.h"; sourceTree = "<group>"; };
 		ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddWindowController+TouchBar.swift"; path = "macosx/AddWindowController+TouchBar.swift"; sourceTree = "<group>"; };
@@ -1634,6 +1636,7 @@
 				ACB7C7C51F44F6D90025DAB6 /* Transmission+TouchBar.swift */,
 				ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */,
 				ACAC9D9F1F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift */,
+				AC0253C21F538CFA00FEB10A /* InfoWindowController+TouchBar.swift */,
 			);
 			name = TouchBar;
 			sourceTree = "<group>";
@@ -2458,6 +2461,7 @@
 				A200B9200A22798F007BBB1E /* InfoWindowController.m in Sources */,
 				A2AF1C390A3D0F6200F1575D /* FileOutlineView.m in Sources */,
 				A2710E770A86796000CE4F7D /* PrefsWindow.m in Sources */,
+				AC0253C31F538CFA00FEB10A /* InfoWindowController+TouchBar.swift in Sources */,
 				A256588D0A9A695400E8A03B /* MessageWindowController.m in Sources */,
 				A29C8B370ACC6EB3000ED9F9 /* PortChecker.m in Sources */,
 				A2AA579D0ADFCAB400CA59F6 /* PiecesView.m in Sources */,

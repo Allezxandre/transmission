@@ -65,6 +65,8 @@
 #import "VDKQueue.h"
 #import <Sparkle/Sparkle.h>
 
+#import "Transmission-Swift.h"
+
 #define TOOLBAR_CREATE                  @"Toolbar Create"
 #define TOOLBAR_OPEN_FILE               @"Toolbar Open"
 #define TOOLBAR_OPEN_WEB                @"Toolbar Open Web"
@@ -441,7 +443,7 @@ static void removeKeRangerRansomware()
         fTorrents = [[NSMutableArray alloc] init];
         fDisplayedTorrents = [[NSMutableArray alloc] init];
 
-        fInfoController = [[InfoWindowController alloc] init];
+        fInfoController = [[SwiftInfoWindowController alloc] init];
 
         //needs to be done before init-ing the prefs controller
         fFileWatcherQueue = [[VDKQueue alloc] init];
