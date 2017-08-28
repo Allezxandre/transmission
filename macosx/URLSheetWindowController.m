@@ -56,6 +56,8 @@ NSString * urlString = nil;
 
     [fOpenButton setTitle: NSLocalizedString(@"Open", "URL sheet button")];
     [fCancelButton setTitle: NSLocalizedString(@"Cancel", "URL sheet button")];
+    [fTouchBarOpenButton setTitle: NSLocalizedString(@"Open", "URL sheet button")];
+    [fTouchBarCancelButton setTitle: NSLocalizedString(@"Cancel", "URL sheet button")];
 
     [fOpenButton sizeToFit];
     [fCancelButton sizeToFit];
@@ -117,6 +119,7 @@ NSString * urlString = nil;
     }
 
     [fOpenButton setEnabled: enable];
+    [fTouchBarOpenButton setEnabled: enable];
 }
 
 @end

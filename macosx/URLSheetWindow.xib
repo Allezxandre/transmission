@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11762"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13038"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="URLSheetWindowController">
@@ -12,6 +14,8 @@
                 <outlet property="fLabelField" destination="5" id="16"/>
                 <outlet property="fOpenButton" destination="7" id="15"/>
                 <outlet property="fTextField" destination="8" id="17"/>
+                <outlet property="fTouchBarCancelButton" destination="0QB-A8-95D" id="Vza-QQ-n9X"/>
+                <outlet property="fTouchBarOpenButton" destination="3hW-rV-xfq" id="q7N-Fp-3VX"/>
                 <outlet property="window" destination="3" id="13"/>
             </connections>
         </customObject>
@@ -27,7 +31,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="400" height="177"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="8">
+                    <textField verticalHuggingPriority="750" textCompletion="NO" id="8">
                         <rect key="frame" x="20" y="50" width="360" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="9">
@@ -67,7 +71,7 @@ Gw
                             <action selector="openURLCancelEndSheet:" target="-2" id="19"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="5">
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5">
                         <rect key="frame" x="17" y="140" width="366" height="17"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="label" id="12">
@@ -77,7 +81,61 @@ Gw
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <touchBar key="touchBar" id="UuC-XN-xIR">
+                    <touchBarItems>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" visibilityPriority="-1000" id="dTU-0b-JyG"/>
+                        <touchBarItem id="Uvh-cw-o5x">
+                            <viewController key="viewController" id="x9g-qR-Oyp">
+                                <button key="view" verticalHuggingPriority="750" id="0QB-A8-95D">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mEp-Sp-eVc">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performClick:" target="6" id="Mb2-tX-jcW"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarItem id="aOl-ht-12S">
+                            <viewController key="viewController" id="j7g-Iz-Puy">
+                                <button key="view" verticalHuggingPriority="750" id="3hW-rV-xfq">
+                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                    <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OG0-lB-tMx">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="performClick:" target="7" id="MUY-Eo-Y48"/>
+                                    </connections>
+                                </button>
+                            </viewController>
+                        </touchBarItem>
+                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceLarge" visibilityPriority="-10000" id="1NF-T3-CXF"/>
+                    </touchBarItems>
+                </touchBar>
             </view>
         </window>
+        <touchBarItem id="A7s-zP-F8j">
+            <viewController key="viewController" id="YQt-6i-7ca">
+                <textField key="view" verticalHuggingPriority="750" id="rvL-wQ-CMw">
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="Label" drawsBackground="YES" id="ZZD-a5-pKT">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </viewController>
+        </touchBarItem>
     </objects>
 </document>

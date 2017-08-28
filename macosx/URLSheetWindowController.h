@@ -29,7 +29,8 @@
     IBOutlet NSTextField * fLabelField;
     IBOutlet NSTextField * fTextField;
     IBOutlet NSButton * fOpenButton, * fCancelButton;
-
+    IBOutlet NSButton * fTouchBarOpenButton, * fTouchBarCancelButton;
+    
     Controller * fController;
 }
 
