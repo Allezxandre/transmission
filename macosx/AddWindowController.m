@@ -328,7 +328,7 @@
 
 - (void)setGroupSelection:(NSInteger)newGroup {
     [[self groupPopUp] selectItemWithTag:newGroup];
-    [self changeGroupValue:[self groupPopUp]];
+    [self changeGroupValue:[[self groupPopUp] selectedItem]];
 }
 
 - (void)setPrioritySelection:(NSInteger)newPriority {

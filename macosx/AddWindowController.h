@@ -24,13 +24,6 @@
 #import "Torrent.h"
 #import "AddWindowCommonProtocol.h"
 
-#define GROUP_SELECTION_CHANGED_NOTIFICATION @"GroupSelectionChangedNotification"
-#define PRIORITY_SELECTION_CHANGED_NOTIFICATION @"PrioritySelectionChangedNotification"
-
-#define POPUP_PRIORITY_HIGH 0
-#define POPUP_PRIORITY_NORMAL 1
-#define POPUP_PRIORITY_LOW 2
-
 @class Controller;
 @class FileOutlineController;
 @class Torrent;
@@ -70,27 +63,16 @@
 
 - (Torrent *) torrent;
 
-- (IBAction) setDestination: (id) sender;
-
-- (IBAction) add: (id) sender;
-- (IBAction) cancelAdd: (id) sender;
-
 - (IBAction) setFileFilterText: (id) sender;
 - (IBAction) checkAll: (id) sender;
 - (IBAction) uncheckAll: (id) sender;
 
 - (IBAction) verifyLocalData: (id) sender;
 
-- (IBAction) changePriority: (id) sender;
-
 - (void) updateCheckButtons: (NSNotification *) notification;
 
 - (void) updateGroupMenu: (NSNotification *) notification;
 
 - (void) changeGroupValue: (id) sender;
-
-// AddWindowCommon
-@property (strong, readonly) NSPopUpButton * priorityPopUp;
-@property (strong, readonly) NSPopUpButton * groupPopUp;
 
 @end

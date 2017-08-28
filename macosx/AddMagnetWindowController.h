@@ -22,18 +22,18 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Torrent.h"
-#import "AddWindowController.h"
+#import "AddWindowCommonProtocol.h"
 
 @class Controller;
 @class Torrent;
 
-@interface AddMagnetWindowController : NSWindowController
+@interface AddMagnetWindowController : NSWindowController <AddWindowCommon>
 {
     IBOutlet NSImageView * fLocationImageView;
     IBOutlet NSTextField * fNameField, * fLocationField;
     IBOutlet NSButton * fStartCheck;
     IBOutlet NSPopUpButton * fGroupPopUp, * fPriorityPopUp;
-
+    
     //remove these when switching to auto layout
     IBOutlet NSTextField * fMagnetLinkLabel;
     IBOutlet NSTextField * fDownloadToLabel, * fGroupLabel, * fPriorityLabel;
@@ -53,13 +53,6 @@
 - (id) initWithTorrent: (Torrent *) torrent destination: (NSString *) path controller: (Controller *) controller;
 
 - (Torrent *) torrent;
-
-- (void) setDestination: (id) sender;
-
-- (void) add: (id) sender;
-- (void) cancelAdd: (id) sender;
-
-- (void) changePriority: (id) sender;
 
 - (void) updateGroupMenu: (NSNotification *) notification;
 

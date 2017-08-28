@@ -69,6 +69,7 @@
 
     [self setGroupsMenu];
     [fGroupPopUp selectItemWithTag: fGroupValue];
+    [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self];
 
     NSInteger priorityIndex;
     switch ([fTorrent priority])
@@ -81,6 +82,7 @@
             priorityIndex = POPUP_PRIORITY_NORMAL;
     }
     [fPriorityPopUp selectItemAtIndex: priorityIndex];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PRIORITY_SELECTION_CHANGED_NOTIFICATION object:self];
 
     [fStartCheck setState: [[NSUserDefaults standardUserDefaults] boolForKey: @"AutoStartDownload"] ? NSOnState : NSOffState];
 
@@ -242,6 +244,7 @@
             priority = TR_PRI_NORMAL;
     }
     [fTorrent setPriority: priority];
+    [[NSNotificationCenter defaultCenter] postNotificationName:PRIORITY_SELECTION_CHANGED_NOTIFICATION object:self];
 }
 
 - (void) updateGroupMenu: (NSNotification *) notification
@@ -253,6 +256,20 @@
         fGroupDeterminationType = TorrentDeterminationAutomatic;
         [fGroupPopUp selectItemWithTag: fGroupValue];
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self];
+}
+
+@synthesize priorityPopUp = fPriorityPopUp;
+@synthesize groupPopUp = fGroupPopUp;
+
+- (void)setGroupSelection:(NSInteger)newGroup {
+    [[self groupPopUp] selectItemWithTag:newGroup];
+    [self changeGroupValue:[[self groupPopUp] selectedItem]];
+}
+
+- (void)setPrioritySelection:(NSInteger)newPriority {
+    [[self priorityPopUp] selectItemWithTag:newPriority];
+    [self changePriority:[self priorityPopUp]];
 }
 
 @end
@@ -306,6 +323,7 @@
     else if ([fDestination isEqualToString: [[GroupsController groups] customDownloadLocationForIndex: previousGroup]])
         [self setDestinationPath: [[NSUserDefaults standardUserDefaults] stringForKey: @"DownloadFolder"] determinationType: TorrentDeterminationAutomatic];
     else;
+    [[NSNotificationCenter defaultCenter] postNotificationName:GROUP_SELECTION_CHANGED_NOTIFICATION object:self];
 }
 
 - (void) sameNameAlertDidEnd: (NSAlert *) alert returnCode: (NSInteger) returnCode contextInfo: (void *) contextInfo
