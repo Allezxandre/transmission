@@ -9,7 +9,7 @@
         <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AddWindowController">
+        <customObject id="-2" userLabel="File's Owner" customClass="AddWindowController" customModule="Transmission" customModuleProvider="target">
             <connections>
                 <outlet property="fCheckAllButton" destination="103" id="108"/>
                 <outlet property="fDeleteCheck" destination="58" id="60"/>
