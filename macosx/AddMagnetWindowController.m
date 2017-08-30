@@ -47,7 +47,7 @@
     if ((self = [super initWithWindowNibName: @"AddMagnetWindow"]))
     {
         fTorrent = torrent;
-        fDestination = [[path stringByExpandingTildeInPath] retain];
+        fDestination = [path stringByExpandingTildeInPath];
 
         fController = controller;
 
@@ -162,10 +162,6 @@
 - (void) dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver: self];
-
-    [fDestination release];
-
-    [super dealloc];
 }
 
 - (Torrent *) torrent
@@ -284,7 +280,7 @@
         [fTorrent startTransfer];
 
     [self close];
-    [fController askOpenMagnetConfirmed: self add: YES]; //ensure last, since it releases this controller
+    [fController askOpenMagnetConfirmed: self add: YES];
 }
 
 - (void) setDestinationPath: (NSString *) destination determinationType: (TorrentDeterminationType) determinationType
@@ -292,8 +288,7 @@
     destination = [destination stringByExpandingTildeInPath];
     if (!fDestination || ![fDestination isEqualToString: destination])
     {
-        [fDestination release];
-        fDestination = [destination retain];
+        fDestination = destination;
 
         [fTorrent changeDownloadFolderBeforeUsing: fDestination determinationType: determinationType];
     }
@@ -303,7 +298,6 @@
 
     ExpandedPathToIconTransformer * iconTransformer = [[ExpandedPathToIconTransformer alloc] init];
     [fLocationImageView setImage: [iconTransformer transformedValue: fDestination]];
-    [iconTransformer release];
 }
 
 - (void) setGroupsMenu
@@ -331,7 +325,6 @@
     if ([[alert suppressionButton] state] == NSOnState)
         [[NSUserDefaults standardUserDefaults] setBool: NO forKey: @"WarningFolderDataSameName"];
 
-    [alert release];
 
     if (returnCode == NSAlertSecondButtonReturn)
         [self performSelectorOnMainThread: @selector(confirmAdd) withObject: nil waitUntilDone: NO];

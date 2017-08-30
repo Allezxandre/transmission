@@ -94,7 +94,7 @@ NSString * urlString = nil;
 
 - (NSString *) urlString
 {
-    return [[[fTextField stringValue] retain] autorelease];
+    return [fTextField stringValue];
 }
 
 - (void) controlTextDidChange: (NSNotification *) notification
