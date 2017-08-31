@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13038"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="URLSheetWindowController">
             <connections>
-                <outlet property="fCancelButton" destination="6" id="22"/>
-                <outlet property="fLabelField" destination="5" id="16"/>
-                <outlet property="fOpenButton" destination="7" id="15"/>
-                <outlet property="fTextField" destination="8" id="17"/>
-                <outlet property="fTouchBarCancelButton" destination="0QB-A8-95D" id="Vza-QQ-n9X"/>
-                <outlet property="fTouchBarOpenButton" destination="3hW-rV-xfq" id="q7N-Fp-3VX"/>
+                <outlet property="cancelButton" destination="6" id="KN6-O6-goG"/>
+                <outlet property="labelField" destination="5" id="sfX-P9-SBs"/>
+                <outlet property="openButton" destination="7" id="ZDf-RD-Ffz"/>
+                <outlet property="textField" destination="8" id="vKt-QA-mHZ"/>
                 <outlet property="window" destination="3" id="13"/>
             </connections>
         </customObject>
@@ -24,16 +20,18 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="URLSheetWindow" animationBehavior="default" id="3" userLabel="URLSheetWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="168" y="356" width="400" height="177"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+            <rect key="contentRect" x="168" y="356" width="413" height="164"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
             <value key="minSize" type="size" width="400" height="177"/>
             <view key="contentView" id="4">
-                <rect key="frame" x="0.0" y="0.0" width="400" height="177"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="166"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" textCompletion="NO" id="8">
-                        <rect key="frame" x="20" y="50" width="360" height="80"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8">
+                        <rect key="frame" x="20" y="39" width="373" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="D1B-X4-ptN"/>
+                        </constraints>
                         <textFieldCell key="cell" lineBreakMode="charWrapping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="9">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -43,9 +41,8 @@
                             <outlet property="delegate" destination="-2" id="21"/>
                         </connections>
                     </textField>
-                    <button verticalHuggingPriority="750" id="7">
-                        <rect key="frame" x="304" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7">
+                        <rect key="frame" x="317" y="1" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" inset="2" id="10">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -54,12 +51,11 @@ DQ
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="openURLEndSheet:" target="-2" id="18"/>
+                            <action selector="openURLEndSheet:" target="-2" id="672-gM-RIP"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" id="6">
-                        <rect key="frame" x="222" y="12" width="82" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6">
+                        <rect key="frame" x="235" y="1" width="82" height="32"/>
                         <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="11">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -68,12 +64,11 @@ Gw
 </string>
                         </buttonCell>
                         <connections>
-                            <action selector="openURLCancelEndSheet:" target="-2" id="19"/>
+                            <action selector="openURLCancelEndSheet:" target="-2" id="uEA-88-lr0"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" id="5">
-                        <rect key="frame" x="17" y="140" width="366" height="17"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <textField verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5">
+                        <rect key="frame" x="18" y="129" width="378" height="17"/>
                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="label" id="12">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -81,61 +76,24 @@ Gw
                         </textFieldCell>
                     </textField>
                 </subviews>
-                <touchBar key="touchBar" id="UuC-XN-xIR">
-                    <touchBarItems>
-                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" visibilityPriority="-1000" id="dTU-0b-JyG"/>
-                        <touchBarItem id="Uvh-cw-o5x">
-                            <viewController key="viewController" id="x9g-qR-Oyp">
-                                <button key="view" verticalHuggingPriority="750" id="0QB-A8-95D">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mEp-Sp-eVc">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" usesAppearanceFont="YES"/>
-                                        <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="performClick:" target="6" id="Mb2-tX-jcW"/>
-                                    </connections>
-                                </button>
-                            </viewController>
-                        </touchBarItem>
-                        <touchBarItem id="aOl-ht-12S">
-                            <viewController key="viewController" id="j7g-Iz-Puy">
-                                <button key="view" verticalHuggingPriority="750" id="3hW-rV-xfq">
-                                    <rect key="frame" x="0.0" y="0.0" width="72" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="OG0-lB-tMx">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" usesAppearanceFont="YES"/>
-                                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="performClick:" target="7" id="MUY-Eo-Y48"/>
-                                    </connections>
-                                </button>
-                            </viewController>
-                        </touchBarItem>
-                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceLarge" visibilityPriority="-10000" id="1NF-T3-CXF"/>
-                    </touchBarItems>
-                </touchBar>
+                <constraints>
+                    <constraint firstItem="5" firstAttribute="leading" secondItem="8" secondAttribute="leading" id="11f-55-YcH"/>
+                    <constraint firstItem="5" firstAttribute="centerX" secondItem="8" secondAttribute="centerX" id="1Zc-mf-xeJ"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7" secondAttribute="trailing" constant="20" symbolic="YES" id="7uL-v8-7wn"/>
+                    <constraint firstItem="7" firstAttribute="width" secondItem="6" secondAttribute="width" id="D5e-ep-UUL"/>
+                    <constraint firstAttribute="trailing" secondItem="8" secondAttribute="trailing" constant="20" symbolic="YES" id="Odj-Bz-n0m"/>
+                    <constraint firstItem="7" firstAttribute="leading" secondItem="6" secondAttribute="trailing" constant="12" symbolic="YES" id="TUL-jI-OIe"/>
+                    <constraint firstItem="8" firstAttribute="leading" secondItem="4" secondAttribute="leading" constant="20" symbolic="YES" id="UkG-lC-nD3"/>
+                    <constraint firstItem="5" firstAttribute="top" secondItem="4" secondAttribute="top" constant="20" symbolic="YES" id="fE5-6Q-MfA"/>
+                    <constraint firstItem="8" firstAttribute="top" secondItem="5" secondAttribute="bottom" constant="10" id="mUb-dL-jIR"/>
+                    <constraint firstItem="6" firstAttribute="baseline" secondItem="7" secondAttribute="baseline" id="tJa-EA-4Fb"/>
+                    <constraint firstItem="8" firstAttribute="trailing" secondItem="7" secondAttribute="trailing" id="tzC-E0-UsD"/>
+                    <constraint firstItem="6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4" secondAttribute="leading" constant="20" symbolic="YES" id="uYN-dM-v7Y"/>
+                    <constraint firstItem="6" firstAttribute="top" secondItem="8" secondAttribute="bottom" constant="10" id="vAx-4N-rRF"/>
+                    <constraint firstAttribute="bottom" secondItem="6" secondAttribute="bottom" constant="8" id="xEi-R5-67R"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="145.5" y="161"/>
         </window>
-        <touchBarItem id="A7s-zP-F8j">
-            <viewController key="viewController" id="YQt-6i-7ca">
-                <textField key="view" verticalHuggingPriority="750" id="rvL-wQ-CMw">
-                    <autoresizingMask key="autoresizingMask"/>
-                    <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="Label" drawsBackground="YES" id="ZZD-a5-pKT">
-                        <font key="font" usesAppearanceFont="YES"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                    </textFieldCell>
-                </textField>
-            </viewController>
-        </touchBarItem>
     </objects>
 </document>
