@@ -47,6 +47,7 @@
     Torrent * fTorrent;
     NSString * fDestination, * fTorrentFile;
     BOOL fLockDestination;
+    BOOL fInitializedFromNib;
 
     BOOL fDeleteTorrentEnableInitially, fCanToggleDelete;
     NSInteger fGroupValue;

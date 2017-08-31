@@ -48,6 +48,7 @@
 
     NSInteger fGroupValue;
     TorrentDeterminationType fGroupDeterminationType;
+    BOOL fInitializedFromNib;
 }
 
 - (id) initWithTorrent: (Torrent *) torrent destination: (NSString *) path controller: (Controller *) controller;

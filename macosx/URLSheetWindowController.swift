@@ -103,7 +103,11 @@ class URLSheetWindowController: NSWindowController {
 class URLSheetTouchBar: NSTouchBar {
     private static let xibName = "URLSheetWindow+TouchBar"
     
-    /// Returns an instance of an AddWindowTouchBar
+    /// Returns an instance of an AddWindowTouchBar.
+    /// - parameter windowController: The window controller that will own the `xib` file.
+    ///
+    /// - warning: Calling this method **will** call `awakeFromNib` on `windowController`.
+    ///            If the method was already called, this can lead to unexpected behaviors.
     static func instanceFromNib(withWindowController windowController: URLSheetWindowController) -> URLSheetTouchBar {
         // Load the objects from the xib file
         var objects = NSArray()
