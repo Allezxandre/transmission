@@ -41,12 +41,38 @@ enum TouchBarPriority: Int {
 
 @available(OSX 10.12.2, *)
 class AddWindowTouchBar: NSTouchBar {
+    
+    private static let xibName = "AddWindowTouchBar"
+    
+    /// Returns an instance of an AddWindowTouchBar
+    static func instanceFromNib(withWindowController windowController: AddWindowCommon) -> AddWindowTouchBar {
+        // Load the objects from the xib file
+        var objects = NSArray()
+        Bundle.main.loadNibNamed(xibName, owner: windowController, topLevelObjects: &objects)
+        
+        // Find the first AddWindowTouchBar in the objects
+        var touchbar: AddWindowTouchBar? = nil
+        for object in objects {
+            if let object = object as? AddWindowTouchBar {
+                touchbar = object
+                break
+            }
+        }
+        
+        if let touchbar = touchbar {
+            return touchbar
+        } else {
+            fatalError("Cannot find an 'AddWindowTouchBar' in xib file named '\(xibName)'. Objects found: \(objects)")
+        }
+    }
+    
     @IBOutlet var windowController: AddWindowCommon! {
         didSet {
             NotificationCenter.default.addObserver(forName: NSNotification.Name(PRIORITY_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updateTouchbarPriority)
         }
     }
     @IBOutlet var touchBarPriorityControl: NSSegmentedControl!
+    
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -66,4 +92,22 @@ class AddWindowTouchBar: NSTouchBar {
         self.windowController.setPrioritySelection(selectedPriority.popUpPriority)
     }
     
+}
+
+@available(OSX 10.12.2, *)
+extension AddWindowController {
+    open override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = AddWindowTouchBar.instanceFromNib(withWindowController: self)
+        touchBar.windowController = self
+        return touchBar
+    }
+}
+
+@available(OSX 10.12.2, *)
+extension AddMagnetWindowController {
+    open override func makeTouchBar() -> NSTouchBar? {
+        let touchBar = AddWindowTouchBar.instanceFromNib(withWindowController: self)
+        touchBar.windowController = self
+        return touchBar
+    }
 }
