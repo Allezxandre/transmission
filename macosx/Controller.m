@@ -35,7 +35,6 @@
 #import "PrefsController.h"
 #import "GroupsController.h"
 #import "AboutWindowController.h"
-#import "URLSheetWindowController.h"
 #import "AddWindowController.h"
 #import "AddMagnetWindowController.h"
 #import "MessageWindowController.h"

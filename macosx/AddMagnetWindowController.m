@@ -59,6 +59,7 @@
 
 - (void) awakeFromNib
 {
+    if (fInitializedFromNib) return;
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(updateGroupMenu:)
         name: @"UpdateGroups" object: nil];
 
@@ -150,6 +151,8 @@
     [fCancelButton setFrame: cancelButtonFrame];
 
     [fStartCheck sizeToFit];
+    
+    fInitializedFromNib = YES;
 }
 
 - (void) windowDidLoad

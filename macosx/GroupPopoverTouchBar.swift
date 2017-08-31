@@ -11,17 +11,18 @@ import Cocoa
 @available(OSX 10.12.2, *)
 class GroupPopoverTouchBarItem: NSPopoverTouchBarItem {
     
-    @IBOutlet var windowController: AddWindowCommon! {
-        didSet {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name(GROUP_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updatePopoverButton)
-        }
+    @IBOutlet weak var windowController: AddWindowCommon!
+    
+    override func awakeFromNib() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(GROUP_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updatePopoverButton)
+        self.updatePopoverButton(notification: nil)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    @IBOutlet var buttonScrollView: NSScrollView! {
+    @IBOutlet weak var buttonScrollView: NSScrollView! {
         didSet {
             let buttons = GroupsController.groups().touchbarGroupItems(withAction: #selector(groupButtonTouched), onTarget: self)
             
@@ -61,7 +62,7 @@ class GroupPopoverTouchBarItem: NSPopoverTouchBarItem {
         self.dismissPopover(sender)
     }
     
-    func updatePopoverButton(notification: Notification) {
+    func updatePopoverButton(notification: Notification?) {
         if let selectedItem = self.windowController.groupPopUp.selectedItem {
             self.collapsedRepresentationLabel = selectedItem.title
             self.collapsedRepresentationImage = selectedItem.image

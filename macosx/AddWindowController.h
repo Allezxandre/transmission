@@ -47,6 +47,7 @@
     Torrent * fTorrent;
     NSString * fDestination, * fTorrentFile;
     BOOL fLockDestination;
+    BOOL fInitializedFromNib;
 
     BOOL fDeleteTorrentEnableInitially, fCanToggleDelete;
     NSInteger fGroupValue;
@@ -74,5 +75,11 @@
 - (void) updateGroupMenu: (NSNotification *) notification;
 
 - (void) changeGroupValue: (id) sender;
+
+// AddWindowCommon IBActions
+- (IBAction) setDestination: (id) sender;
+- (IBAction) add: (id) sender;
+- (IBAction) cancelAdd: (id) sender;
+- (IBAction) changePriority: (id) sender;
 
 @end

@@ -41,18 +41,48 @@ enum TouchBarPriority: Int {
 
 @available(OSX 10.12.2, *)
 class AddWindowTouchBar: NSTouchBar {
-    @IBOutlet var windowController: AddWindowCommon! {
-        didSet {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name(PRIORITY_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updateTouchbarPriority)
+    
+    private static let xibName = "AddWindowTouchBar"
+    
+    /// Returns an instance of an AddWindowTouchBar.
+    /// - parameter windowController: The window controller that will own the `xib` file.
+    ///
+    /// - warning: Calling this method **will** call `awakeFromNib` on `windowController`.
+    ///            If the method was already called, this can lead to unexpected behaviors.
+    static func instanceFromNib(withWindowController windowController: AddWindowCommon) -> AddWindowTouchBar {
+        // Load the objects from the xib file
+        var objects = NSArray()
+        Bundle.main.loadNibNamed(xibName, owner: windowController, topLevelObjects: &objects)
+        
+        // Find the first AddWindowTouchBar in the objects
+        var touchbar: AddWindowTouchBar? = nil
+        for object in objects {
+            if let object = object as? AddWindowTouchBar {
+                touchbar = object
+                break
+            }
+        }
+        
+        if let touchbar = touchbar {
+            return touchbar
+        } else {
+            fatalError("Cannot find an 'AddWindowTouchBar' in xib file named '\(xibName)'. Objects found: \(objects)")
         }
     }
-    @IBOutlet var touchBarPriorityControl: NSSegmentedControl!
+    
+    @IBOutlet weak var windowController: AddWindowCommon!
+    @IBOutlet weak var touchBarPriorityControl: NSSegmentedControl!
+    
+    override func awakeFromNib() {
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(PRIORITY_SELECTION_CHANGED_NOTIFICATION), object: windowController, queue: nil, using: self.updateTouchbarPriority)
+        self.updateTouchbarPriority(notification: nil)
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func updateTouchbarPriority(notification: Notification) {
+    func updateTouchbarPriority(notification: Notification?) {
         self.touchBarPriorityControl.selectSegment(withTag: self.windowController.priorityPopUp.selectedTag())
     }
     
@@ -66,4 +96,18 @@ class AddWindowTouchBar: NSTouchBar {
         self.windowController.setPrioritySelection(selectedPriority.popUpPriority)
     }
     
+}
+
+@available(OSX 10.12.2, *)
+extension AddWindowController {
+    open override func makeTouchBar() -> NSTouchBar? {
+        return AddWindowTouchBar.instanceFromNib(withWindowController: self)
+    }
+}
+
+@available(OSX 10.12.2, *)
+extension AddMagnetWindowController {
+    open override func makeTouchBar() -> NSTouchBar? {
+        return AddWindowTouchBar.instanceFromNib(withWindowController: self)
+    }
 }

@@ -279,12 +279,14 @@
 		A2F35BE315C5A7F900EBF632 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F35BE215C5A7F900EBF632 /* Foundation.framework */; };
 		A2F40AE40A361C00006B8288 /* Transmission.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4D2784360905709500687951 /* Transmission.icns */; };
 		A2F7CF5513035F7B0016FF10 /* URLSheetWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2F7CF5413035F7B0016FF10 /* URLSheetWindow.xib */; };
-		A2F7CF5F13035FFD0016FF10 /* URLSheetWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2F7CF5E13035FFD0016FF10 /* URLSheetWindowController.m */; };
 		A2F8CD430F3D0F4A00DB356A /* miniupnpcstrings.h in Headers */ = {isa = PBXBuildFile; fileRef = A2F8CD420F3D0F4A00DB356A /* miniupnpcstrings.h */; };
 		A2FB057F0BFEB6800095564D /* DragOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB057D0BFEB6800095564D /* DragOverlayView.m */; };
 		A2FB701C0D95CAEA0001F331 /* GroupsController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2FB701B0D95CAEA0001F331 /* GroupsController.m */; };
 		AC0253C31F538CFA00FEB10A /* InfoWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0253C21F538CFA00FEB10A /* InfoWindowController+TouchBar.swift */; };
+		AC24BFCA1F57903700BFA21B /* URLSheetWindow+TouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC24BFC91F57903700BFA21B /* URLSheetWindow+TouchBar.xib */; };
+		AC24BFCC1F57936A00BFA21B /* URLSheetWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC24BFCB1F57936A00BFA21B /* URLSheetWindowController.swift */; };
 		AC2C68061F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */; };
+		AC8BAC031F578ABD007A62F9 /* AddWindowTouchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8BAC051F578ABD007A62F9 /* AddWindowTouchBar.xib */; };
 		ACA1C5271F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */; };
 		ACAC9DA01F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAC9D9F1F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift */; };
 		ACB7C7C61F44F6D90025DAB6 /* Transmission+TouchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB7C7C51F44F6D90025DAB6 /* Transmission+TouchBar.swift */; };
@@ -925,8 +927,6 @@
 		A2F35BE015C5A7ED00EBF632 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A2F35BE215C5A7F900EBF632 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A2F7CF5413035F7B0016FF10 /* URLSheetWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = URLSheetWindow.xib; path = macosx/URLSheetWindow.xib; sourceTree = "<group>"; };
-		A2F7CF5D13035FFD0016FF10 /* URLSheetWindowController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = URLSheetWindowController.h; path = macosx/URLSheetWindowController.h; sourceTree = "<group>"; };
-		A2F7CF5E13035FFD0016FF10 /* URLSheetWindowController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = URLSheetWindowController.m; path = macosx/URLSheetWindowController.m; sourceTree = "<group>"; };
 		A2F8951E0A2D4BA500ED2127 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Credits.rtf; path = macosx/Credits.rtf; sourceTree = "<group>"; };
 		A2F8CD420F3D0F4A00DB356A /* miniupnpcstrings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = miniupnpcstrings.h; path = "third-party/miniupnpc/miniupnpcstrings.h"; sourceTree = "<group>"; };
 		A2FB057C0BFEB6800095564D /* DragOverlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DragOverlayView.h; path = macosx/DragOverlayView.h; sourceTree = "<group>"; };
@@ -935,8 +935,20 @@
 		A2FB701A0D95CAEA0001F331 /* GroupsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GroupsController.h; path = macosx/GroupsController.h; sourceTree = "<group>"; };
 		A2FB701B0D95CAEA0001F331 /* GroupsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GroupsController.m; path = macosx/GroupsController.m; sourceTree = "<group>"; };
 		AC0253C21F538CFA00FEB10A /* InfoWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "InfoWindowController+TouchBar.swift"; path = "macosx/InfoWindowController+TouchBar.swift"; sourceTree = "<group>"; };
+		AC24BFC81F578EB200BFA21B /* nl */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = nl; path = nl.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC24BFC91F57903700BFA21B /* URLSheetWindow+TouchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "URLSheetWindow+TouchBar.xib"; path = "macosx/URLSheetWindow+TouchBar.xib"; sourceTree = "<group>"; };
+		AC24BFCB1F57936A00BFA21B /* URLSheetWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLSheetWindowController.swift; path = macosx/URLSheetWindowController.swift; sourceTree = "<group>"; };
 		AC2C68051F46082500B5772A /* Controller+NSSharingServicePickerTouchBarItemDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; path = "macosx/Controller+NSSharingServicePickerTouchBarItemDelegate.swift"; sourceTree = "<group>"; };
 		AC453E661F54B70F009F0D33 /* AddWindowCommonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AddWindowCommonProtocol.h; path = macosx/AddWindowCommonProtocol.h; sourceTree = "<group>"; };
+		AC8BAC041F578ABD007A62F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC061F578AC8007A62F9 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC071F578AD4007A62F9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC081F578AD7007A62F9 /* it */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = it; path = it.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC0A1F578ADC007A62F9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ru; path = ru.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC0B1F578ADE007A62F9 /* tr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = tr; path = tr.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC0F1F578B93007A62F9 /* de */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = de; path = de.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC101F578B97007A62F9 /* da */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = da; path = da.lproj/AddWindowTouchBar.xib; sourceTree = "<group>"; };
+		AC8BAC111F578B99007A62F9 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/AddWindowTouchBar.xib"; sourceTree = "<group>"; };
 		AC980CE21F43AE5C001D102A /* Transmission-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Transmission-Bridging-Header.h"; path = "macosx/Transmission-Bridging-Header.h"; sourceTree = "<group>"; };
 		ACA1C5261F4B2B6B00C4C430 /* AddWindowController+TouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "AddWindowController+TouchBar.swift"; path = "macosx/AddWindowController+TouchBar.swift"; sourceTree = "<group>"; };
 		ACAC9D9F1F4DE81D00EC98C3 /* GroupPopoverTouchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GroupPopoverTouchBar.swift; path = macosx/GroupPopoverTouchBar.swift; sourceTree = "<group>"; };
@@ -1203,8 +1215,7 @@
 				A25892630CF1F7E800CCCDDF /* StatsWindowController.m */,
 				A2085DD90C53BC74000BC3B7 /* AboutWindowController.h */,
 				A2085DDA0C53BC74000BC3B7 /* AboutWindowController.m */,
-				A2F7CF5D13035FFD0016FF10 /* URLSheetWindowController.h */,
-				A2F7CF5E13035FFD0016FF10 /* URLSheetWindowController.m */,
+				AC24BFCB1F57936A00BFA21B /* URLSheetWindowController.swift */,
 				A2966E8513DAF74C007B52DF /* GlobalOptionsPopoverViewController.h */,
 				A2966E8613DAF74C007B52DF /* GlobalOptionsPopoverViewController.m */,
 				A234D0D40C79FB6000A82373 /* Additions */,
@@ -1311,6 +1322,7 @@
 				A23F50000D1D99D7002FCB97 /* MainMenu.xib */,
 				A23F4FF00D1D98AD002FCB97 /* PrefsWindow.xib */,
 				A29576010D11D63C0093B167 /* Creator.xib */,
+				AC8BAC051F578ABD007A62F9 /* AddWindowTouchBar.xib */,
 				A26AF27C0D2DBDDF00FF7140 /* AddWindow.xib */,
 				A21F1538117299F100CF5A9C /* AddMagnetWindow.xib */,
 				A215BF5B0F02EBB800350CDB /* GroupRules.xib */,
@@ -1320,6 +1332,7 @@
 				A2E57AC51310831400A7DAB1 /* StatusBar.xib */,
 				A2E57B9B13109DC200A7DAB1 /* FilterBar.xib */,
 				A2F7CF5413035F7B0016FF10 /* URLSheetWindow.xib */,
+				AC24BFC91F57903700BFA21B /* URLSheetWindow+TouchBar.xib */,
 				A2D307B00D9EC9F50051FD27 /* BlocklistStatusWindow.xib */,
 				A209ECA1114319C3002B02D1 /* InfoWindow.xib */,
 				A209EAEA1142D294002B02D1 /* InfoGeneralView.xib */,
@@ -2221,10 +2234,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				AC8BAC031F578ABD007A62F9 /* AddWindowTouchBar.xib in Resources */,
 				4D043A7F090AE979009FEDA8 /* TransmissionDocument.icns in Resources */,
 				4DE5CCCB0981D9BE00BE280E /* Defaults.plist in Resources */,
 				A29B0C270BD15FEF0006F230 /* Credits.rtf in Resources */,
 				A2F40AE40A361C00006B8288 /* Transmission.icns in Resources */,
+				AC24BFCA1F57903700BFA21B /* URLSheetWindow+TouchBar.xib in Resources */,
 				A259317E0A73B2CC002F4FE7 /* TransmissionHelp in Resources */,
 				A22A8D560AEEAFA5007E9CB9 /* Localizable.strings in Resources */,
 				A231274C0D11D0B7003F9AFF /* AboutWindow.xib in Resources */,
@@ -2468,6 +2483,7 @@
 				A29C8B370ACC6EB3000ED9F9 /* PortChecker.m in Sources */,
 				A2AA579D0ADFCAB400CA59F6 /* PiecesView.m in Sources */,
 				A25E74650AF5097C006F11AE /* ExpandedPathToPathTransformer.m in Sources */,
+				AC24BFCC1F57936A00BFA21B /* URLSheetWindowController.swift in Sources */,
 				A25E74660AF5097D006F11AE /* ExpandedPathToIconTransformer.m in Sources */,
 				A2265F420B5EF5F40093DDA5 /* FileNameCell.m in Sources */,
 				A2A1CB7A0BF29D5500AE959F /* PeerProgressIndicatorCell.m in Sources */,
@@ -2515,7 +2531,6 @@
 				A21F15AC11729A8B00CF5A9C /* AddMagnetWindowController.m in Sources */,
 				A2661D6112D0E8D9004F69D5 /* FilterBarView.m in Sources */,
 				A25BB02A12F4F517004B724E /* InfoTabButtonBack.m in Sources */,
-				A2F7CF5F13035FFD0016FF10 /* URLSheetWindowController.m in Sources */,
 				A2E57ABB1310822C00A7DAB1 /* StatusBarController.m in Sources */,
 				A2E57BA713109E6B00A7DAB1 /* FilterBarController.m in Sources */,
 				A2B5B4E91880665E0071A66A /* ShareTorrentFileHelper.m in Sources */,
@@ -2926,6 +2941,24 @@
 			name = InfoPlist.strings;
 			path = macosx/QuickLookPlugin;
 			sourceTree = SOURCE_ROOT;
+		};
+		AC8BAC051F578ABD007A62F9 /* AddWindowTouchBar.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AC8BAC041F578ABD007A62F9 /* en */,
+				AC8BAC061F578AC8007A62F9 /* es */,
+				AC8BAC071F578AD4007A62F9 /* fr */,
+				AC8BAC081F578AD7007A62F9 /* it */,
+				AC8BAC0A1F578ADC007A62F9 /* ru */,
+				AC8BAC0B1F578ADE007A62F9 /* tr */,
+				AC8BAC0F1F578B93007A62F9 /* de */,
+				AC8BAC101F578B97007A62F9 /* da */,
+				AC8BAC111F578B99007A62F9 /* pt-PT */,
+				AC24BFC81F578EB200BFA21B /* nl */,
+			);
+			name = AddWindowTouchBar.xib;
+			path = macosx;
+			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 

@@ -48,6 +48,7 @@
 
     NSInteger fGroupValue;
     TorrentDeterminationType fGroupDeterminationType;
+    BOOL fInitializedFromNib;
 }
 
 - (id) initWithTorrent: (Torrent *) torrent destination: (NSString *) path controller: (Controller *) controller;
@@ -55,5 +56,11 @@
 - (Torrent *) torrent;
 
 - (void) updateGroupMenu: (NSNotification *) notification;
+
+// AddWindowCommon IBActions
+- (IBAction) setDestination: (id) sender;
+- (IBAction) add: (id) sender;
+- (IBAction) cancelAdd: (id) sender;
+- (IBAction) changePriority: (id) sender;
 
 @end

@@ -73,6 +73,7 @@
 
 - (void) awakeFromNib
 {
+    if (fInitializedFromNib) return;
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(updateCheckButtons:) name: @"TorrentFileCheckChange" object: fTorrent];
 
     [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(updateGroupMenu:) name: @"UpdateGroups" object: nil];
@@ -134,6 +135,7 @@
     fTimer = [NSTimer scheduledTimerWithTimeInterval: UPDATE_SECONDS target: self
                 selector: @selector(updateFiles) userInfo: nil repeats: YES];
     [self updateFiles];
+    fInitializedFromNib = YES;
 }
 
 - (void) windowDidLoad

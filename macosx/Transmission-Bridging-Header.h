@@ -5,5 +5,6 @@
 #import "Torrent.h"
 #import "ShareTorrentFileHelper.h"
 #import "AddWindowController.h"
+#import "AddMagnetWindowController.h"
 #import "GroupsController.h"
 #import "InfoWindowController.h"
