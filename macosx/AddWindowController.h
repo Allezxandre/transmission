@@ -75,4 +75,10 @@
 
 - (void) changeGroupValue: (id) sender;
 
+// AddWindowCommon IBActions
+- (IBAction) setDestination: (id) sender;
+- (IBAction) add: (id) sender;
+- (IBAction) cancelAdd: (id) sender;
+- (IBAction) changePriority: (id) sender;
+
 @end
