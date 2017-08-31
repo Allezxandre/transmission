@@ -2,11 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13189.4" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaDFRPlugin" version="13038"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13189.4"/>
         <capability name="box content view" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="the Touch Bar" message="Use a version of macOS with Touch Bar support." minToolsVersion="8.1" minSystemVersion="10.12.2" requiredIntegratedClassName="NSTouchBar"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AddWindowController" customModule="Transmission" customModuleProvider="target">
@@ -330,125 +328,6 @@ Gw
                         </connections>
                     </searchField>
                 </subviews>
-                <touchBar key="touchBar" id="FdK-GT-5Nq" customClass="AddWindowTouchBar" customModule="Transmission" customModuleProvider="target">
-                    <touchBarItems>
-                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="Gdx-OX-E7x"/>
-                        <touchBarItem id="c0X-DC-06k">
-                            <viewController key="viewController" id="kaL-CH-vBu">
-                                <segmentedControl key="view" verticalHuggingPriority="750" springLoaded="YES" id="vGJ-1r-eZ5">
-                                    <rect key="frame" x="0.0" y="0.0" width="106" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fillEqually" style="rounded" trackingMode="selectOne" id="FNu-Ph-1HR">
-                                        <font key="font" metaFont="system"/>
-                                        <segments>
-                                            <segment image="PriorityLowTemplate" width="32" tag="2"/>
-                                            <segment image="PriorityNormalTemplate" width="32" selected="YES" tag="1"/>
-                                            <segment image="PriorityHighTemplate" width="32"/>
-                                        </segments>
-                                    </segmentedCell>
-                                    <connections>
-                                        <action selector="changedTouchBarPriority:" target="FdK-GT-5Nq" id="jwC-Be-h5E"/>
-                                    </connections>
-                                </segmentedControl>
-                            </viewController>
-                            <size key="designTimeSize" width="106" height="30"/>
-                        </touchBarItem>
-                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFixedSpaceSmall" id="IUU-2a-PG2"/>
-                        <touchBarPopoverItem customizationLabel="" collapsedRepresentationImage="ActionHover" collapsedRepresentationLabel="Groupe" id="HaL-V6-cjB" customClass="GroupPopoverTouchBarItem" customModule="Transmission" customModuleProvider="target">
-                            <touchBar key="popoverTouchBar" id="FGE-W3-fUB">
-                                <touchBarItems>
-                                    <touchBarItem id="Kky-od-uuo">
-                                        <viewController key="viewController" id="ZaY-OH-cBq">
-                                            <textField key="view" verticalHuggingPriority="750" misplaced="YES" id="SXn-dw-qyZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="60" height="24"/>
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <textFieldCell key="cell" borderStyle="bezel" alignment="left" title="Groupe" drawsBackground="YES" id="9OC-t2-L3z">
-                                                    <font key="font" usesAppearanceFont="YES"/>
-                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                </textFieldCell>
-                                            </textField>
-                                        </viewController>
-                                        <size key="designTimeSize" width="60" height="24"/>
-                                    </touchBarItem>
-                                    <touchBarItem id="Zab-RM-b2g">
-                                        <viewController key="viewController" id="v0n-Hn-5Te">
-                                            <scrollView key="view" autoresizesSubviews="NO" borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" findBarPosition="belowContent" id="mde-Oe-ChT">
-                                                <rect key="frame" x="0.0" y="0.0" width="617" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <clipView key="contentView" autoresizesSubviews="NO" id="B6U-ga-1V0">
-                                                    <rect key="frame" x="0.0" y="0.0" width="617" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <subviews>
-                                                        <view id="nrb-61-gHI">
-                                                            <rect key="frame" x="0.0" y="0.0" width="602" height="15"/>
-                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                        </view>
-                                                    </subviews>
-                                                </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="DPe-n8-g55">
-                                                    <rect key="frame" x="-100" y="-100" width="617" height="16"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                                <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="j6v-YE-Oga">
-                                                    <rect key="frame" x="-100" y="-100" width="16" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </scroller>
-                                            </scrollView>
-                                        </viewController>
-                                        <size key="designTimeSize" width="617" height="30"/>
-                                    </touchBarItem>
-                                </touchBarItems>
-                            </touchBar>
-                            <connections>
-                                <outlet property="buttonScrollView" destination="mde-Oe-ChT" id="JNr-Mk-5ve"/>
-                                <outlet property="windowController" destination="-2" id="oK6-SB-llK"/>
-                            </connections>
-                        </touchBarPopoverItem>
-                        <touchBarSpacerItem identifier="NSTouchBarItemIdentifierFlexibleSpace" id="dXH-hU-wWL"/>
-                        <touchBarItem id="GZn-dw-vUI">
-                            <viewController key="viewController" id="HiO-Ee-ehN">
-                                <button key="view" verticalHuggingPriority="750" id="Yal-Zx-u9C">
-                                    <rect key="frame" x="0.0" y="0.0" width="90" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Annuler" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="9zP-M4-y5r">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" usesAppearanceFont="YES"/>
-                                        <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="performClick:" target="21" id="OjX-AK-8P2"/>
-                                    </connections>
-                                </button>
-                            </viewController>
-                        </touchBarItem>
-                        <touchBarItem id="tvA-yY-MHk">
-                            <viewController key="viewController" id="wX5-fu-A98">
-                                <button key="view" verticalHuggingPriority="750" id="e68-m8-W72">
-                                    <rect key="frame" x="0.0" y="0.0" width="80" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                    <buttonCell key="cell" type="push" title="Ajouter" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="sr7-1r-dmu">
-                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                        <font key="font" usesAppearanceFont="YES"/>
-                                        <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                    </buttonCell>
-                                    <connections>
-                                        <action selector="performClick:" target="19" id="swT-Aa-ciH"/>
-                                    </connections>
-                                </button>
-                            </viewController>
-                            <size key="designTimeSize" width="80" height="32"/>
-                        </touchBarItem>
-                    </touchBarItems>
-                    <connections>
-                        <outlet property="touchBarPriorityControl" destination="vGJ-1r-eZ5" id="YXG-NY-IKH"/>
-                        <outlet property="windowController" destination="-2" id="lKr-ZJ-1ka"/>
-                    </connections>
-                </touchBar>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="61"/>
@@ -461,7 +340,6 @@ DQ
         </customObject>
     </objects>
     <resources>
-        <image name="ActionHover" width="16" height="16"/>
         <image name="NSApplicationIcon" width="128" height="128"/>
         <image name="PriorityHighTemplate" width="12" height="12"/>
         <image name="PriorityLowTemplate" width="12" height="12"/>
