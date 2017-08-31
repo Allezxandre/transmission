@@ -97,17 +97,13 @@ class AddWindowTouchBar: NSTouchBar {
 @available(OSX 10.12.2, *)
 extension AddWindowController {
     open override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = AddWindowTouchBar.instanceFromNib(withWindowController: self)
-        touchBar.windowController = self
-        return touchBar
+        return AddWindowTouchBar.instanceFromNib(withWindowController: self)
     }
 }
 
 @available(OSX 10.12.2, *)
 extension AddMagnetWindowController {
     open override func makeTouchBar() -> NSTouchBar? {
-        let touchBar = AddWindowTouchBar.instanceFromNib(withWindowController: self)
-        touchBar.windowController = self
-        return touchBar
+        return AddWindowTouchBar.instanceFromNib(withWindowController: self)
     }
 }
